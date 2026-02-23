@@ -31,4 +31,8 @@ let furniture_database = [
 
 let furniture_routes = Router();
 
+furniture_routes.get("/Furniture", (req, res) => {
+  res.json(furniture_database);
+});
+
 export const router = furniture_routes;
