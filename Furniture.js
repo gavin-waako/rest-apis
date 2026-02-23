@@ -35,4 +35,18 @@ furniture_routes.get("/Furniture", (req, res) => {
   res.json(furniture_database);
 });
 
+furniture_routes.get("/Furniture/:id", (req, res) => {
+  let identifier = req.params.id;
+
+  let match = furniture_database.find((piece) => piece.id == identifier);
+
+  if (match !== undefined) {
+    res.json(match);
+  } else {
+    res
+      .status(404)
+      .json("Cannot find a piece of furniture with ID: " + identifier);
+  }
+});
+
 export const router = furniture_routes;
